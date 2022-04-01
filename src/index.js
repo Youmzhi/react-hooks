@@ -1,43 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Example from './Example'
-import ExampleH from './ExampleH'
-import Example2 from './Example2'
-import Example3 from './Example3'
-import Example4 from './Example4'
-import Example5 from './Example5'
-import Example6 from './Example6'
+import { BrowserRouter as Router, Route, Link, Routes  } from 'react-router-dom'
 
-import Example7 from './example7/Example7'
-import Example8 from './example8/Example8'
+// hooks
+import Hooks from './Hooks'
 
-import Example9 from './Example9'
-import Example10 from './Example10'
+
+// router
+import Index from './pages/Index'
+import List from './pages/List'
+import Profile from './pages/Profile'
+
+import MyProfile from './pages/MyProfile'
+import OthersProfile from './pages/OthersProfile'
+
 
 
 ReactDOM.render(
-  <div>
-    <Example />
-    <br/>
-    <ExampleH />
-    <br/>
-    <Example2 />
-    <br/>
-    <Example3 />
-    <br/>
-    <Example4 />
-    <br/>
-    <Example5 />
-    <br/>
-    <Example6 />
-    <br/>
-    <Example7 /> 
-    <br/>
-    <Example8 />
-    <br/>
-    <Example9 />
-    <br/>
-    <Example10 />
-  </div>,
+  <Router>
+    <ul>
+        <li> <Link to="/">首页</Link> </li>
+        <li><Link to="/list/123">列表</Link></li>
+        <li><Link to="/profile/123">Profile</Link></li>
+        <li><Link to="/hooks">Hooks</Link></li>
+    </ul>
+    <Routes>
+        <Route path="/" element={<Index/>} />
+
+        <Route path="/list/*" element={<List/>} />
+        
+        <Route path="/profile" exact element={<Profile/>}>
+          <Route path="me" element={<MyProfile/>}></Route>
+          <Route path=":id" element={<OthersProfile/>}></Route>
+        </Route>
+
+        <Route path="/hooks" element={<Hooks/>} />
+    </Routes>
+  </Router>,
   document.getElementById('root')
 );

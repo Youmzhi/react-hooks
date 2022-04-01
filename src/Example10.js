@@ -19,14 +19,18 @@ function useWinSize() {
     return () => {
       window.removeEventListener('resize', onResize)
     }
-  }, [])
+  }, []) // 离开当前页面执行副作用函数
   return size
 }
 
 function Example10() {
+  const [sizeTest, setSizeText] = useState()
   const size = useWinSize() 
   return (
-    <div>页面Size:{size.width}x{size.height}</div>
+    <div>页面Size:{size.width}x{size.height}<br/>
+      {sizeTest}
+      <button onClick={()=>{setSizeText('这是测试数据变更,useEffect函数是否会执行')}}>更新数据</button>
+    </div>
   )
 }
 

@@ -7,7 +7,7 @@ function Index() {
     return ()=> {
       console.log('离开Index Page')
     }
-  }, [])
+  }, []) // []代表离开页面执行副作用函数 输入：离开Index Page
   return (
     <div>
       Index Page
@@ -21,7 +21,7 @@ function List() {
     return ()=> {
       console.log('离开List Page')
     }
-  })
+  }, [])
   return (
     <div>
       List Page
@@ -32,11 +32,11 @@ function List() {
 function Example4() {
   const [count, setCount] = useState(0)
   useEffect(()=> {
-    console.log(`useEffect => you Clicked ${count} times`)
+    console.log(`useEffect => you Clicked ${count} times `)
     return ()=> {
       console.log('==============================')
     }
-  }, [count]) // 参数代表state状态发生改变 触发副作用函数
+  }, [count]) // 参数代表state状态发生改变 触发副作用函数 输出：====== useEfff...
   return (
     <div>
       <p>You clicked {count} times</p>
