@@ -28,10 +28,10 @@ function List(props) {
   console.log(params)
   console.log(search)
   console.log(match)
-  
+
   return (
     <div>
-      list page
+      list page userID: { params['*'] }
       <nav>
         <Link to="me">My Profile</Link>
       </nav>
